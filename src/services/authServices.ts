@@ -60,7 +60,7 @@ export const registerUser = async (email: unknown, password: unknown) => {
     throw new AppError(400, "Password must contian between 10 to 128 characters");
   }
 
+  const hashedPassword = await hashPassword(password);
 
-
-
+  return createUser(email, hashedPassword);
 };
