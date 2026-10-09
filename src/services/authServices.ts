@@ -2,6 +2,7 @@ import { prisma } from "../lib/prisma.js";
 import { Prisma } from "../generated/prisma/client.js";
 import { AppError } from "../errors/AppError.js";
 import { isValidEmailFormat, isValidPasswordFormat } from "../utils/utils.js";
+import { hashPassword, verifyPassword } from "../utils/password.js";
 
 export const findUserByEmail = async (email: string) => {
   return prisma.user.findUnique({
